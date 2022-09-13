@@ -3,6 +3,7 @@ import Editor from './editor';
 import './database';
 import '../css/style.css';
 import Logo from '../images/logo.png';
+// import { initdb } from './database';
 
 
 const installBtn = document.getElementById('buttonInstall');
@@ -23,6 +24,7 @@ window.addEventListener('beforeinstallprompt', (event) => {
   
 window.addEventListener('load', function () {
   console.log("Load Listener: Engaged")
+  // initdb();
   document.getElementById('logo').src = Logo;
 })
 

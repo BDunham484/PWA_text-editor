@@ -1,5 +1,5 @@
 {
-  "name": "JATE",
+  "name": "jate",
   "version": "1.0.0",
   "description": "A single page text editor that runs in the browser and meets PWA criteria. The app is installable and functions offline",
   "private": "true",
