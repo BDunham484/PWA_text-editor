@@ -3,15 +3,20 @@ import Editor from './editor';
 import './database';
 import '../css/style.css';
 import Logo from '../images/logo.png';
-// import { initdb } from './database';
-
 
 const installBtn = document.getElementById('buttonInstall');
+
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  installBtn.style.display = "none";
+}
+
+
 
 window.addEventListener('beforeinstallprompt', (event) => {
   event.preventDefault();
   installBtn.style.visibility = 'visible';
   installBtn.addEventListener('click', () => {
+    console.log('Install button has been clicked!');
     event.prompt();
     installBtn.setAttribute('disabled', true);
     installBtn.textContent = 'Installed!';
@@ -24,7 +29,6 @@ window.addEventListener('beforeinstallprompt', (event) => {
   
 window.addEventListener('load', function () {
   console.log("Load Listener: Engaged")
-  // initdb();
   document.getElementById('logo').src = Logo;
 })
 
