@@ -1,20 +1,24 @@
 import { openDB } from 'idb';
 import 'regenerator-runtime/runtime';
-
+//function to initialize database
 const initdb = async () => 
   console.log("initdb has been run")
+  //create new database named jate_db v.1
   openDB('jate_db', 1, {
+    //add database schema if not already initialized
     upgrade(db) {
       if (db.objectStoreNames.contains('jate')) {
         console.log('jate database already exists');
         return;
       }
+      //create new object store for data and give it a key name of 'id which will increment automatically
       db.createObjectStore('jate', { keyPath: 'id', autoIncrement: true });
       console.log('jate database created');
     },
   })
 
 // TODO: Add logic to a method that accepts some content and adds it to the database
+//export function used to edit db
 export const putDb = async (content) => {
   console.log('PUT to the database');
   //create a connection to the jate database and the version we want to use
@@ -31,6 +35,7 @@ export const putDb = async (content) => {
 };
 
 // TODO: Add logic for a method that gets all the content from the database
+//export function to get data from database
 export const getDb = async () => {
   console.log('GET from the database');
   // Create a connection to the IndexedDB database and the version we want to use.
@@ -56,5 +61,5 @@ export const getDb = async () => {
   return finalResult;
 };
 
-
+//initdb() call
 initdb();
